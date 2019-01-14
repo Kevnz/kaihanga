@@ -18,6 +18,8 @@ class App extends Component {
     this.handleModelChange = this.handleModelChange.bind(this);
     this.addProperty = this.addProperty.bind(this);
     this.getString = this.getString.bind(this);
+    this.getStringForTypsetter = this.getStringForTypsetter.bind(this);
+
   }
   handleInputChange(event) {
     const target = event.target;
@@ -49,6 +51,17 @@ class App extends Component {
     );
     this.setState({
       genString: `-- ${this.state.modelName} --attributes ${attrs.join(",")}`
+    });
+  }
+  getStringForTypsetter() {
+    console.log("the inputs", this.input);
+    const inputs = Object.keys(this.input);
+
+    const attrs = inputs.map(
+      k => `${this.input[k].value}:${this.inputTypes[k].value}`
+    );
+    this.setState({
+      genString: `npx typesetter model ${this.state.modelName} ${attrs.join(" ")}`
     });
   }
   render() {
@@ -87,7 +100,7 @@ class App extends Component {
             Kaihanga - (noun) maker, builder, creator, architect, producer,
             drafter.
           </title>
-          <link rel="canonical" href="http://mysite.com/example" />
+          <link rel="canonical" href="http://kevinisom.info/kaihanga" />
         </Helmet>
         <header className="App-header">
           <Logo />
@@ -110,7 +123,11 @@ class App extends Component {
           </div>
           <div onClick={this.getString} className="button">
             {" "}
-            Generate String
+            Generate String For Sequelize
+          </div>
+          <div onClick={this.getStringForTypsetter} className="button">
+            {" "}
+            Generate String For Bookshelf
           </div>
         </div>
         <div>{this.state.genString}</div>
