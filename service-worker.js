@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kaihanga/precache-manifest.4bc6f13a58e62906482247cef8f6d3db.js"
+  "/kaihanga/precache-manifest.b94ac6d3a125b28defb3e1e99baf5e9c.js"
 );
 
 workbox.clientsClaim();
